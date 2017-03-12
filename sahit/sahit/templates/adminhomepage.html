@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django-Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+<style>
+
+  .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+      color: #1abc9c !important;
+  }
+  body {
+  font-size: 1.6rem;
+  font-family: "Open Sans", sans-serif;
+  color: #331d35;
+}
+ body {
+            background-image: url("https://image.ibb.co/jiTSBF/background.png");
+            margin:0;
+		    height:100%;
+		    width:100%;
+        }
+</style>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#about_us">ABOUT US</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+
+          <li><a href="/addcourier">ADD RECORD</a> </li>
+        <li><a href="/logout">LOGOUT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+    <table class="table table-hover table-bordered ">
+            <thead class="thead-inverse">
+                <tr>
+
+                    <th>S.No</th>
+                    <th>Delivery To</th>
+                    <th>Company</th>
+                    <th>Item</th>
+                    <th>Date of Receival</th>
+                    <th>Hostelname</th>
+                    <th>Room</th>
+                    <th>Hidden Status</th>
+                </tr>
+            </thead>
+        <tbody>
+            {% for obj in couriers %}
+                <tr>
+
+                    <td>{{forloop.counter}}</td>
+                    <td>{{ obj.receiver }}</td>
+                    <td>{{ obj.company }}</td>
+                    <td>{{ obj.item }}</td>
+                    <td>{{ obj.date }}</td>
+                    <td>{{ obj.hostelname }}</td>
+                    <td>{{ obj.room }}</td>
+                    <td>
+                        {% if obj.flag == 0 %}
+
+                            <a href="/adminshow/{{ obj.id }}" class="btn btn-primary" role="button">
+                                Hide it
+                                </a>
+
+                        {% else %}
+                            <a href="/adminshow/{{ obj.id }}" class="btn btn-warning" role="button">
+                                Undhide it
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>o
+            {% endfor %}
+        </tbody>
+        </table>
+</div>
+</body>
+</html>

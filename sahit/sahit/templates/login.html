@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+    {% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+
+
+
+
+<div id="id01" class="modal">
+
+
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+    <div class="container" id="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4" id="form">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+                    <div class="panel-body">
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<p class="bs-component">
+<table>
+<tr>
+    <td>{{ form.username.label_tag }}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+</p>
+<p class="bs-component">
+<center><input class="btn btn-success btn-sm" type="submit" value="login" /></center>
+</p>
+<input type="hidden" name="next" value="{{ next }}" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block javascript %}
+<div class="container-fluid  text-center" id="hello">
+<h1>IIT GANDHINAGAR</h1><br><h2>Courier Services</h2>
+<button type="button" class="btn btn-primary btn-lg" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><span class="glyphicon glyphicon-log-in"> LOGIN</span></button>
+
+</div>
+
+<div class="container-fluid bg-3 text-center" id="about_us" style="padding: 100px;background-color: white" >
+  <h3 class="margin" align="center">My Creators</h3><br>
+  <div class="row" style="padding: 30px ; line-height: 30px">
+    <div class="col-sm-4">
+      <p>Patnala Jayakrishna Sahit <br>  Batch of 2016 <br> Computer Science and Engineering </p>
+      <img src="" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-4">
+      <img class="img-circle" src="data:image/jpeg;base64,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" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-4">
+        <p>Kukunuri Sai Venkata Ratna Rithwik <br> Batch of 2016 <br> Computer Science and Engineering</p>
+      <img src="" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-6 footerleft ">
+        <div class="logofooter"> ABOUT US</div>
+        <p>Courier Services , developed by coding club of IIT Gandhinagar under the authority of IIT Gandhinagar. All RIghts Reserved.</p>
+        <p><i class="fa fa-map-pin"></i> IIT Gandhinagar, Palaj campus , Palaj , Gujarat, pin 382 355 INDIA</p>
+        <p><i class="fa fa-phone"></i> Phone (India) : +91 9502 091 755</p>
+        <p><i class="fa fa-envelope"></i> E-mail : www.iitgn.ac.in</p>
+
+      </div>
+      <div class="col-xs-2 col-sm-6 paddingtop-bottom">
+        <h6 class="heading7">GENERAL LINKS</h6>
+        <ul class="footer-ul">
+          <li><a href="http://www.iitgn.ac.in"> IIT Gandhinagar</a></li>
+          <li><a href="https://www.google.co.in/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjjvtOxmc7SAhUCxbwKHesCBv0QFggZMAA&url=http%3A%2F%2Fwww.iitgn.ac.in%2Fstudent%2Flifeoncampus%2Fclubs%2F&usg=AFQjCNGTVKJ5QSuxxfnpoNhz4goR7bellQ&sig2=RcWWhtZExhSrZhyI-lJ9CQ&bvm=bv.149397726,d.dGc"> Metis</a></li>
+
+
+        </ul>
+      </div>
+      <div class="col-xs-3 col-sm-6 paddingtop-bottom">
+        <h6 class="heading7">LATEST POST</h6>
+        <div class="post">
+
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 paddingtop-bottom">
+        <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+
+          <div class="fb-xfbml-parse-ignore">
+            <a href="#" target="_blank" class="btn-social btn-instagram"><i class="fa fa-instagram"></i></a>
+            <a href="#" target="_blank" class="btn-social btn-google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" target="_blank" class="btn-social btn-twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" target="_blank" class="btn-social btn-linkedin"><i class="fa fa-linkedin"></i></a>
+              <a href="#" target="_blank" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <
+<script>
+{% if not user.is_authenticated %}
+$("ul.nav.navbar-nav.navbar-right").css("display","none");
+{% endif %}
+</script>
+
+{% endblock %}

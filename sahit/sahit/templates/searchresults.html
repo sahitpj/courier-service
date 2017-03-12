@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        nav{
+            -webkit-backface-visibility: hidden;  /* Chrome, Safari, Opera */
+            backface-visibility: hidden;
+
+        }
+        .container{
+            opacity: 1;
+        }
+        td{
+            color: black;
+            font-weight: 800;
+            font-size: 15px;
+        }
+        th{
+            color: black;
+            font-size: 15px;
+        }
+        input[type=text]:focus {
+			background-color: lightblue;
+
+            height: inherit;
+            font-size: 20px;
+		}
+        .jumbotron{
+            background-color: white;
+        }
+        input[type=submit] {
+            text-align:right;
+            padding-left: 3px;
+            padding-right: 3px;
+            background-color: ;
+            color: white;
+            font-size: 20px;
+            height: inherit;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+
+        }
+        button{
+            height: inherit;
+            font-size: 20px;
+        }
+        .blahblah{
+            height: 5%;
+        }
+        input[type=text]{
+            height: inherit;
+        }
+        input[type=text], select {
+			font-size:20px;
+            height: inherit;
+			padding-left:10px;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+        #example-date-input{
+            height: inherit;
+            font-size: 20px;
+        }
+        .container{
+            font-size: 20px;
+        }
+        body {
+            background-color: black;
+        }
+        h1{
+            text-align: center;
+            font-size: 25px;
+        }
+        #searchbutton{
+            font-size: 20px;
+            color: black;
+            border-color: white;
+
+        }
+        #searchbutton:hover{
+            background-color: white;
+        }
+        p{
+            font-size: large;
+        }
+        thead{
+            opacity: 0.7;
+     }
+        table{
+            color: white;
+        }
+        .row{
+            font-size: 20px;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container"  >
+<header>
+    <div class="jumbotron" style="background-color: white;">
+        <h1 style="background-color: white;">IIT Gandhinagar Couriers</h1>
+
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active" style="margin-left: 20px">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+
+
+      <li class="nav-item dropdown" style="margin-left: 50px">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Hostels
+        </a>
+        <ul class="dropdown-menu" style="font-size: 20px;">
+            <li><a href="/filter/aibaan">Aibaan</a></li>
+            <li><a href="/filter/beauki">Beauki</a></li>
+            <li><a href="/filter/chimair">Chimair</a></li>
+            <li><a href="/filter/duven">Duven</a></li>
+            <li><a href="/filter/emiet">Emiet</a></li>
+            <li><a href="/filter/firpeal">Firpeal</a></li>
+        </ul>
+      </li>
+    </ul>
+      <ul class="nav navbar-nav navbar-right" style="margin-left: 50px">
+      <form class="form-inline my-2 my-lg-0" method='GET' action='' >
+      <input class="form-control mr-sm-2"  type='text' name='q' placeholder='Search posts' style="padding-left: 10px;"  value='{{ request.GET.q }}'>
+      <button class="btn btn-outline-success my-2 my-sm-0" id="searchbutton" type="submit">Search</button>
+    </form>
+
+
+
+      </ul>
+  </div>
+</nav>
+        </div>
+</header>    <!--
+        <div class="blahblah">
+            <div class="row">
+                <div class="col-sm-4">
+                    <form  method='GET' action='' style="text-align: left">
+                    <input type='text' name='q' placeholder='Search posts' style="padding-left: 10px;"  value='{{ request.GET.q }}'/>
+                    <input type='submit' value='Search' />
+                    </form>
+                </div>
+                <div class="col-sm-4">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="font-size: 20px;">Filter By
+                        </button>
+                        <ul class="dropdown-menu" style="font-size: 20px;">
+                            <li><a href="/filter/aibaan">Aibaan</a></li>
+                            <li><a href="/filter/beauki">Beauki</a></li>
+                            <li><a href="/filter/chimair">Chimair</a></li>
+                            <li><a href="/filter/duven">Duven</a></li>
+                            <li><a href="/filter/emiet">Emiet</a></li>
+                            <li><a href="/filter/firpeal">Firpeal</a></li>
+                            <li><a href="/filter/academic block">Academic Block</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="example-date-input" class="col-4 col-form-label">Date</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+        <div class="lead">
+        <h2 style="text-align: left;color: black">Latest Courier is for {{ new_cour }}</h2>
+        </div>
+        <table class="table table-hover table-bordered table-striped">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>S.No</th>
+                    <th>Delivery To</th>
+                    <th>Company</th>
+                    <th>Date of Receival</th>
+                    <th>Hostelname</th>
+                    <th>Room</th>
+                </tr>
+            </thead>
+        <tbody>
+
+        {% for obj in couriers %}
+            {% if obj.flag == 0 %}
+            <tr >
+                <td>{{forloop.counter}}</td>
+                <td >{{ obj.receiver }}</td>
+                <td>{{ obj.company }}</td>
+                <td>{{ obj.date }}</td>
+                <td>{{ obj.hostelname }}</td>
+                <td>{{ obj.room }}</td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+        </table>
+<footer>
+    <div class="breadcrumb">
+    <h3 style="text-align: center">Developed by rithwik <a href="https://www.facebook.com/coding8iitgn/?ref=page_internal"> Metis</a></h3>
+        </div>
+</footer>
+    </div>
+</body>
+</html>

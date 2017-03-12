@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Courier</title>
+</head>
+<body>
+    {% for obj in couriers %}
+            <p>{{ obj.receiver }}</p>
+            <p>{{ obj.company }}</p>
+            <p>{{ obj.item }}</p>
+            <p>{{ obj.date }}</p>
+            <p>{{ obj.hostelname }}</p>
+            <p>{{ obj.room }}</p>
+            <p>{{ obj.flag }}</p>
+    {% endfor %}
+</body>
+</html>
