@@ -2,10 +2,16 @@
 #log/views.py
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render
+'''
+render takes the description you provide it and displays it on screen, 
+It takes in 3 arguments - the request, the object you want to display(webpage) and the JSON file you want to pass
+through the request
+'''
 from django.contrib.auth.decorators import login_required
 from .models import Post
 from django.shortcuts import render, get_object_or_404, redirect , Http404
 from django.db.models import Q
+#Q is a query function for the django database
 from django.views import generic
 from django.views.generic import View
 from django.shortcuts import render_to_response
@@ -23,9 +29,13 @@ def home(request):
     parcels = Post.objects.all().order_by("-date")
     context = {"couriers": parcels}
     return render(request,"adminhomepage.html",context)
+'''
+Here the request object  = request; rendering object = "adminhomepage.html"; JSON file = "context"
+'''
 
 from django.shortcuts import render, get_object_or_404, redirect
 def homepage(request):
+    #parcels is a django.db object ( database object ) 
     parcels = Post.objects.all().order_by("-date")
     parcels = parcels.filter(flag=0)
     for i in parcels:
